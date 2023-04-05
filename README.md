@@ -1,5 +1,5 @@
 # ChIP-Seq_analysis
 
 '''
-cd linux/zli529
+git cd linux/zli529
 '''
