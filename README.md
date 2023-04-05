@@ -1,4 +1,4 @@
-# ChIP-Seq_analysis
+# ChIP-Seq-analysis
 
 ```
 sdgdsfkhgkldfsg
