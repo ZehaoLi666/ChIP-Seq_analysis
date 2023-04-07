@@ -1,7 +1,15 @@
 # ChIP-Seq-analysis
 
+Hello everyone! This is a guaidline for ChIP-seq analuysis on Linux. 
+
+# Introduction 
+## ChIP-seq 
+## Methods and Materials 
+
+# Part1: Quality control and alignment processing
+
+
 ```
 sdgdsfkhgkldfsg
 
 ```
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)
