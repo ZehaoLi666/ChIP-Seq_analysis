@@ -7,6 +7,7 @@ Hello everyone! This is a guaidline for ChIP-seq analuysis on Linux.
 ## Methods and Materials 
 
 # Part1: Quality control and alignment processing
+## Strand cross-correlation
 
 
 ```
