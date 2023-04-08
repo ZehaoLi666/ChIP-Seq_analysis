@@ -6,8 +6,13 @@ Hello everyone! This is a guaidline for ChIP-seq analuysis on Linux.
 ## ChIP-seq 
 ## Methods and Materials 
 
-# Part1: Quality control and alignment processing
-## Strand cross-correlation
+# Part1: Quality control 
+## Using FastQC on cluster 
+```
+module load fastqc 
+fastqc *.fastq   # to run all fastq files in this directory
+```
+# Part2: 
 
 
 ```
