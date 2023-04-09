@@ -117,7 +117,7 @@ use [MMR_normalize_by_nucleotide.py](https://github.com/ZehaoLi666/ChIP-Seq_anal
 python3.8 MMR_normalize_by_nucleotide.py input.txt output.txt 1000000
 
 ```
-use python script to convert txt file to Wig format
+use [make_wig_from_nucleotide_coverage.py](https://github.com/ZehaoLi666/ChIP-Seq_analysis/blob/main/make_wig_from_nucleotide_coverage.py) to convert txt file to Wig format
 ```
 python3.8 make_wig_from_nucleotide_coverage.py input.txt output.wig 
 ```
