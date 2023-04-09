@@ -77,11 +77,47 @@ rRNA genes are highly expressed and can account for a large proportion of sequen
 
 Download the referencegenome.gff file from database. 
 ```
+wget URL 
 grep '\trRNA\t' referencegenome.gff > rRNA.bed
 ```
 ### 4.3.2 Use BEDtools to intersect alignment BAM file with rRNA.bed file and filter out reads to rRNA genes
 ```
 module load bedtools 
 bedtools intersect -abam $1-sorted-removed.bam -b rRNA.bed -v > $1-sorted-filteredrRNA.bam 
+```
+## 4.4 Keep only properly paired reads
+ChIP-seq experiments typically involve sequencing DNA fragments that have been immunoprecipitated with a specific antibody, followed by mapping the resulting sequencing reads to the reference genome. The immunoprecipitation process can introduce biases in the sequencing library preparation, leading to non-specific binding, PCR amplification artifacts, and other sources of noise.
+
+Filtering out improperly paired reads can help to reduce the effects of these biases and improve the accuracy of downstream analyses. Improperly paired reads are reads where one or both reads in a paired-end sequencing experiment do not align as expected based on the insert size distribution, indicating that the read pair is likely to be a PCR artifact or other source of noise.
+```
+samtools view -b -f 2 -F 4 output-removed-sorted-paired-aligned.bam > output-only-properly-paired-aligned.bam 
+```
+
+# 5. Visualize the alignment in IGV (genome browser)
+This step in very important. We need to make TDF or BigWig file by converting BAM file. To directly compare samples on IGV, normalize by number of million mapped reads before producing TDF/BigWig. One possible way of doing this: Convert BAM to BED file, use bedtools genomecov with -d option to get read count per nucleotide in the genome, convert to WIG with custom Python script, convert WIG to TDF using Igvtools ToTDF. Can then visualize the TDF. 
+
+## 5.1 Make referencegenome.genome file
+```
+samtools faidx referencegenome.fasta   # faidx creates an index file of the fasta file for quick access sequence elements
+cut -f1,2 referencegenome.fasta.fai > referencegenome.genome  # cut makes a file with two rows: 1) name in f1 2) sequence length in f2
+```
+
+## 5.2 Convert BAM to BED file
+```
+bedtools bamtobed -i output-only-properly-paired-aligned.bam > output-only-properly-paired-aligned.bed 
+``` 
+
+## 5.3 Get read count per nucleotide in the genome
+```
+bedtools genomecov -d -i output-only-properly-paired-aligned.bed -g referencegenome.genome > output.txt 
+```
+
+## 5.4 Convert txt file to Wig and TDF format
+use two python script 
+```
+python3.8 make_wig_from_nucleotide_coverage.py output-only-properly-paired-norm.txt output-only-properly-paired-norm.wig 
+```
+```
+igvtools toTDF output-only-properly-paired-norm.wig output-only-properly-paired-norm.wig referencegenome.genome 
 ```
 
