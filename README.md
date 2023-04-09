@@ -99,7 +99,6 @@ This step in very important. We need to make TDF or BigWig file by converting BA
 ## 5.1 Make referencegenome.genome file
 ```
 samtools faidx referencegenome.fasta   # faidx creates an index file of the fasta file for quick access sequence elements
-cut -f1,2 referencegenome.fasta.fai > referencegenome.genome  # cut makes a file with two rows: 1) name in f1 2) sequence length in f2
 ```
 
 ## 5.2 Convert BAM to BED file
@@ -125,6 +124,6 @@ python3.8 make_wig_from_nucleotide_coverage.py input.txt output.wig
 use igvtools to convert Wig format to TDF format
 ```
 module load igv
-igvtools toTDF output-only-properly-paired-norm.wig output-only-properly-paired-norm.wig referencegenome.genome 
+igvtools toTDF output-only-properly-paired-norm.wig output-only-properly-paired-norm.wig referencegenome.fasta.fai 
 ```
 
