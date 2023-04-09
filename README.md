@@ -10,7 +10,13 @@ Hello everyone! This is a guaidline for ChIP-seq analuysis on Linux.
 - The IGV tracks are very important and need to make normalized tracks to carefully look at where the peaks are.
 - Definitely need to do removal of reads marked as PCR duplicates (we've have some debate on this for RNA-seq)
 
-## 1.2 Methods and Materials 
+## 1.2 Methods and Materials
+### 1.2.1 Methods 
+#### Workflow 
+#### Pachages 
+#### Automatic analysis 
+### 1.2.2 Materials
+
 
 # 2. Part1: Quality control 
 ## 2.1 Using FastQC on cluster 
@@ -124,7 +130,18 @@ python3.8 make_wig_from_nucleotide_coverage.py input.txt output.wig
 use igvtools to convert Wig format to TDF format
 ```
 module load igv
-igvtools toTDF output-only-properly-paired-norm.wig output-only-properly-paired-norm.wig referencegenome.fasta.fai 
+igvtools Q output-only-properly-paired-norm.wig output-only-properly-paired-norm.wig referencegenome.fasta.fai 
 ```
 Here are some results from IGV: 
+In the example we gave, we were trying to find two proteins binding area in Plasmodium berghei's genome. 
+
+
+
+
+If your chip-seq is only for looking some specific proteins' binding region in the genome, it would not be necessary to do the steps followed. 
+
+# 6. Peak calling 
+We can use [MACS2](https://hbctraining.github.io/Intro-to-ChIPseq/lessons/05_peak_calling_macs.html) to do this step.
+
+
 
