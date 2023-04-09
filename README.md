@@ -113,11 +113,13 @@ bedtools genomecov -d -i output-only-properly-paired-aligned.bed -g referencegen
 ```
 
 ## 5.4 Convert txt file to Wig and TDF format
-use two python script 
+use python script to convert txt file to Wig format
 ```
 python3.8 make_wig_from_nucleotide_coverage.py output-only-properly-paired-norm.txt output-only-properly-paired-norm.wig 
 ```
+use igvtools to convert Wig format to TDF format
 ```
+module load igv
 igvtools toTDF output-only-properly-paired-norm.wig output-only-properly-paired-norm.wig referencegenome.genome 
 ```
 
