@@ -130,7 +130,7 @@ python3.8 make_wig_from_nucleotide_coverage.py input.txt output.wig
 use igvtools to convert Wig format to TDF format
 ```
 module load igv
-igvtools Q output-only-properly-paired-norm.wig output-only-properly-paired-norm.tdf referencegenome.fasta.fai 
+igvtools toTDF output-only-properly-paired-norm.wig output-only-properly-paired-norm.tdf referencegenome.fasta.fai 
 ```
 Here are some results from IGV: 
 In the example we gave, we were trying to find two proteins binding area in Plasmodium berghei's genome. 
