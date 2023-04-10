@@ -146,4 +146,23 @@ For many cases, the chip-seq would be much more complicated, so if we directly v
 So we need to follow the workflow below. 
 ![Chip-seq analysis workflow with Masc2](https://hbctraining.github.io/Intro-to-ChIPseq/img/chip_workflow_june2017_step2.png)
 
+Because we've already combined sense.bam and antisense.bam (R1.bam and R2.bam) together, but Macs2 needs them to be separate. Like this 
+```
+module load macs2    
+module load gcc 
+macs2 callpeak -t sample1_R1.bam -c control_R1.bam -f BAM -g 1.9e+7 -n KIN5_G1 --outdir macs2 
+macs2 callpeak -t sample2_R2.bam -c control_R2.bam -f BAM -g 1.9e+7 -n KIN5_G1 --outdir macs2
+# -t input bam file 
+# -c control bam file
+# -f type of input file 
+# -g genome size 
+# -n output prefix name
+# --ourdir  directory of output files
+```
 
+From the previous steps, we've already combined sense.bam and antisense.bam (R1.bam and R2.bam) together, we need add paraments like this:
+```
+macs2 callpeak -t ~/chip/3.alignment/4_keep_paired/paired_KIN5_G1.bam  -c ~/chip/3.alignment/4_keep_paired/paired_GAM.bam -f BAM -g 1.9e+7 -n KIN5_G1 --outdir macs2 --nomodel --extsize 147     
+# --nomodel, this option will skip the model building step
+# --extsize 147, extsize option specifies the extension size for fragment length estimation.
+```
