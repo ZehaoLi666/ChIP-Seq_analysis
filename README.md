@@ -99,7 +99,7 @@ Filtering out improperly paired reads can help to reduce the effects of these bi
 samtools view -b -f 2 -F 4 output-removed-sorted-paired-aligned.bam > output-only-properly-paired-aligned.bam 
 ```
 
-# 5. Visualize the alignment in IGV (genome browser)
+# 5. Part4 Visualize the alignment in IGV (genome browser)
 This step in very important. We need to make TDF or BigWig file by converting BAM file. To directly compare samples on IGV, normalize by number of million mapped reads before producing TDF/BigWig. One possible way of doing this: Convert BAM to BED file, use bedtools genomecov with -d option to get read count per nucleotide in the genome, convert to WIG with custom Python script, convert WIG to TDF using Igvtools ToTDF. Can then visualize the TDF. 
 
 ## 5.1 Make referencegenome.genome file
@@ -140,7 +140,7 @@ In the example we gave, we were trying to find two proteins binding area in Plas
 
 If your chip-seq is only for looking some specific proteins' binding region in the genome, it would not be necessary to do the steps followed. 
 
-# 6. Peak calling 
+# 6. Part5 Peak calling 
 We can use [MACS2](https://hbctraining.github.io/Intro-to-ChIPseq/lessons/05_peak_calling_macs.html) to do this step.
 For many cases, the chip-seq would be much more complicated, so if we directly visualize the alignment file in IGV, we may not get what we want. 
 So we need to follow the workflow below. 
