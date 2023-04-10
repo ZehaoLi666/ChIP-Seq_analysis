@@ -146,7 +146,7 @@ For many cases, the chip-seq would be much more complicated, so if we directly v
 So we need to follow the workflow below. 
 ![Chip-seq analysis workflow with Masc2](https://hbctraining.github.io/Intro-to-ChIPseq/img/chip_workflow_june2017_step2.png)
 
-Because we've already combined sense.bam and antisense.bam (R1.bam and R2.bam) together, but Macs2 needs them to be separate. Like this 
+Because we've already combined sense.bam and antisense.bam (R1.bam and R2.bam) together, but Macs2 needs them to be separate. Like this:
 ```
 module load macs2    
 module load gcc 
