@@ -142,6 +142,8 @@ If your chip-seq is only for looking some specific proteins' binding region in t
 
 # 6. Peak calling 
 We can use [MACS2](https://hbctraining.github.io/Intro-to-ChIPseq/lessons/05_peak_calling_macs.html) to do this step.
-
+For many cases, the chip-seq would be much more complicated, so if we directly visualize the alignment file in IGV, we may not get what we want. 
+So we need to follow the workflow below. 
+![Chip-seq analysis workflow with Masc2](https://hbctraining.github.io/Intro-to-ChIPseq/img/chip_workflow_june2017_step2.png)
 
 
