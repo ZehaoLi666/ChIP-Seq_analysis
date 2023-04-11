@@ -137,7 +137,7 @@ igvtools toTDF output-only-properly-paired-norm.wig output-only-properly-paired-
 ```
 Here are some results from IGV: 
 In the example we gave, we were trying to find two proteins binding area in Plasmodium berghei's genome. 
-
+![results of chip-seq analysis on IGV](https://github.com/ZehaoLi666/ChIP-Seq_analysis/blob/main/IGV-chip.png)
 
 
 
