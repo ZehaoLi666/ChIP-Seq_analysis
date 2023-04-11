@@ -120,7 +120,7 @@ bedtools genomecov -d -i output-only-properly-paired-aligned.bed -g referencegen
 ## 5.4 Convert txt file to Wig and TDF format
 use [MMR_normalize_by_nucleotide.py](https://github.com/ZehaoLi666/ChIP-Seq_analysis/blob/main/MMR_normalize_by_nucleotide.py) to do normalization 
 ```
-python3.8 MMR_normalize_by_nucleotide.py input.txt output.txt 1000000
+python3.8 MMR_normalize_by_nucleotide.py input.txt output.txt 5
 
 ```
 use [make_wig_from_nucleotide_coverage.py](https://github.com/ZehaoLi666/ChIP-Seq_analysis/blob/main/make_wig_from_nucleotide_coverage.py) to convert txt file to Wig format
