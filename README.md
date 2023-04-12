@@ -168,4 +168,3 @@ macs2 callpeak -t ~/chip/3.alignment/4_keep_paired/paired_KIN5_G1.bam  -c ~/chip
 # --nomodel, this option will skip the model building step
 # --extsize 147, extsize option specifies the extension size for fragment length estimation.
 ```
-#shjadgfkjgsdakjhkjhsdgjfdsg
