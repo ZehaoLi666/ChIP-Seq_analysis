@@ -138,10 +138,9 @@ igvtools toTDF output-only-properly-paired-norm.wig output-only-properly-paired-
 Here are some results from IGV: 
 In the example we gave, we were trying to find two proteins binding area in Plasmodium berghei's genome. 
 ![results of chip-seq analysis on IGV](https://github.com/ZehaoLi666/ChIP-Seq_analysis/blob/main/IGV-chip.png)
+It's a little difficult to find peaks by naked eyes. Actually, this step can only provide us a general preview. We need more sophisticated statistic analysis in the next step.
 
 
-
-If your chip-seq is only for looking some specific proteins' binding region in the genome, it would not be necessary to do the steps followed. 
 
 # 6. Part5 Peak calling 
 We can use [MACS2](https://hbctraining.github.io/Intro-to-ChIPseq/lessons/05_peak_calling_macs.html) to do this step.
