@@ -152,19 +152,21 @@ Because we've already combined sense.bam and antisense.bam (R1.bam and R2.bam) t
 ```
 module load macs2    
 module load gcc 
-macs2 callpeak -t sample1_R1.bam -c control_R1.bam -f BAM -g 1.9e+7 -n KIN5_G1 --outdir macs2 
-macs2 callpeak -t sample2_R2.bam -c control_R2.bam -f BAM -g 1.9e+7 -n KIN5_G1 --outdir macs2
+macs2 callpeak -t sample1_R1.bam -c control_R1.bam -f BAM -g 1.9e+7 -n KIN5_G1 -p 0.001 --outdir macs2
+macs2 callpeak -t sample2_R2.bam -c control_R2.bam -f BAM -g 1.9e+7 -n KIN5_G1 -p 0.001 --outdir macs2
 # -t input bam file 
 # -c control bam file
 # -f type of input file 
 # -g genome size 
 # -n output prefix name
 # --ourdir  directory of output files
+# -p P-value, it decides how many peaks you can get. Smaller the P-value, smaller number of peaks you will get. The default P-value is 0.05 in macs2, which maybe cause many false positive results. If you only want get few peaks, try set up a relatively small P-value.
 ```
 
 From the previous steps, we've already combined sense.bam and antisense.bam (R1.bam and R2.bam) together, we need add paraments like this:
 ```
-macs2 callpeak -t ~/chip/3.alignment/4_keep_paired/paired_KIN5_G1.bam  -c ~/chip/3.alignment/4_keep_paired/paired_GAM.bam -f BAM -g 1.9e+7 -n KIN5_G1 --outdir macs2 --nomodel --extsize 147     
+macs2 callpeak -t ~/chip/3.alignment/4_keep_paired/paired_KIN5_G1.bam  -c ~/chip/3.alignment/4_keep_paired/paired_GAM.bam -f BAM -g 1.9e+7 -n KIN5_G1 -p 0.001 --outdir macs2 --nomodel --extsize 147     
 # --nomodel, this option will skip the model building step
 # --extsize 147, extsize option specifies the extension size for fragment length estimation.
 ```
+Since, the result bed file is very small, we can directly put it into IGV to visualize.
