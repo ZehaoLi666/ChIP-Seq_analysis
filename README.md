@@ -138,7 +138,19 @@ igvtools toTDF output-only-properly-paired-norm.wig output-only-properly-paired-
 Here are some results from IGV: 
 In the example we gave, we were trying to find two proteins binding area in Plasmodium berghei's genome. 
 ![results of chip-seq analysis on IGV](https://github.com/ZehaoLi666/ChIP-Seq_analysis/blob/main/IGV-chip.png)
-It's a little difficult to find peaks by naked eyes. Actually, this step can only provide us a general preview. We need more sophisticated statistic analysis in the next step.
+It's a little difficult to find peaks by naked eyes because there are many non-specific binding in control samples. Actually, this step can only provide us a general preview. 
+
+## 5.5 Substract contol 
+we need to substract control's read counts, the rest will be the specific binding region. 
+```
+modolue load macs2
+macs2 callpeak -t <ChIP.bam> -c <Control.bam> -f BAM -g <genome_size> -n <output_prefix> --outdir <output_directory> --keep-dup all
+# <ChIP.bam> is the path to the ChIP sequencing reads in BAM format
+# <Control.bam> is the path to the control sequencing reads in BAM format
+# <genome_size> is the effective genome size of your organism 
+# <output_prefix> is the prefix of the output files
+# --keep-dup all option is used to keep all duplicate reads in the analysis, as recommended by the MACS2 manual.
+```
 
 
 
