@@ -166,10 +166,12 @@ write.table(combinded, file="sub_G1.txt", sep="\t", row.names=FALSE, col.names=F
 ```
 Then continue to do the rest in 5.4. 
 
-Now, we can see the results after substraction of background ![the results after substraction of background](https://github.com/ZehaoLi666/ChIP-Seq_analysis/blob/main/Picture2.png), the read counts look like peaks.    
-
+Now, we can see the results after substraction of background, the read counts look like peaks. 
+![the results after substraction of background](https://github.com/ZehaoLi666/ChIP-Seq_analysis/blob/main/Picture2.png)   
+However, it is not the end. We could use statictical methods to calculate peaks instead of by using naked eyes.
 
 # 6. Part5 Peak calling 
+
 We can use [MACS2](https://hbctraining.github.io/Intro-to-ChIPseq/lessons/05_peak_calling_macs.html) to do this step.
 For many cases, the chip-seq would be much more complicated, so if we directly visualize the alignment file in IGV, we may not get what we want. 
 So we need to follow the workflow below. 
@@ -190,7 +192,7 @@ macs2 callpeak -t sample2_R2.bam -c control_R2.bam -f BAM -g 1.9e+7 -n KIN5_G1 -
 # -p P-value, it decides how many peaks you can get. Smaller the P-value, smaller number of peaks you will get. The default P-value is 0.05 in macs2, which maybe cause many false positive results. If you only want get few peaks, try set up a relatively small P-value.
 ```
 
-From the previous steps, we've already combined sense.bam and antisense.bam (R1.bam and R2.bam) together, we need add paraments like this:
+The above commmand lie may have some errors,so the command lines below could be used alternatively:
 ```
 macs2 callpeak -t ~/chip/3.alignment/4_keep_paired/paired_KIN5_G1.bam  -c ~/chip/3.alignment/4_keep_paired/paired_GAM.bam -f BAM -g 1.9e+7 -n KIN5_G1 -p 0.001 --outdir macs2 --nomodel --extsize 147     
 # --nomodel, this option will skip the model building step
