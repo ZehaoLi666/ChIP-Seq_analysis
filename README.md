@@ -138,19 +138,32 @@ igvtools toTDF output-only-properly-paired-norm.wig output-only-properly-paired-
 Here are some results from IGV: 
 In the example we gave, we were trying to find two proteins binding area in Plasmodium berghei's genome. 
 ![results of chip-seq analysis on IGV](https://github.com/ZehaoLi666/ChIP-Seq_analysis/blob/main/IGV-chip.png)
-It's a little difficult to find peaks by naked eyes because there are many non-specific binding in control samples. Actually, this step can only provide us a general preview. 
+No.3 and No.4 track in this pirture are two replicates of one antibody binding samoles and No.6 track is the control samples. It's a little difficult to find peaks by naked eyes because there are many non-specific binding in control samples. Actually, this step can only provide us a general preview. We need to use treat group to substract control group first.
 
 ## 5.5 Substract contol 
 we need to substract control's read counts, the rest will be the specific binding region. 
+Start from the txt.file, after normalization in 5.4.  
 ```
-modolue load macs2
-macs2 callpeak -t <ChIP.bam> -c <Control.bam> -f BAM -g <genome_size> -n <output_prefix> --outdir <output_directory> --keep-dup all
-# <ChIP.bam> is the path to the ChIP sequencing reads in BAM format
-# <Control.bam> is the path to the control sequencing reads in BAM format
-# <genome_size> is the effective genome size of your organism 
-# <output_prefix> is the prefix of the output files
-# --keep-dup all option is used to keep all duplicate reads in the analysis, as recommended by the MACS2 manual.
+# Read in the two input files
+file1 <- read.table("treat_R1.txt", header=FALSE) 
+file2 <- read.table("control.txt", header=FALSE) 
+
+# combind file1 and file2's column 3 into one file
+combinded <- cbind(file1, file2$V3) 
+
+# Calculate the difference of read counts between the treat and control and generate column5 in combinded data frame
+combinded$V5 <- combinded$'file2$V3' - combinded$V3
+
+# remove column3 and column4 in the combinded data frame
+
+combinded$'file2$V3' <- NULL 
+combinded$V3 <- NULL 
+
+# Write the output to a new file
+write.table(combinded, file="sub_G1.txt", sep="\t", row.names=FALSE, col.names=FALSE)
+
 ```
+Then continue to do the rest in 5.4. 
 
 
 
