@@ -144,6 +144,7 @@ No.3 and No.4 track in this pirture are two replicates of one antibody binding s
 we need to substract control's read counts, the rest will be the specific binding region. 
 Start from the txt.file, after normalization in 5.4.  
 ```
+# R 
 # Read in the two input files
 file1 <- read.table("treat_R1.txt", header=FALSE) 
 file2 <- read.table("control.txt", header=FALSE) 
