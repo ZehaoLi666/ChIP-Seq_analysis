@@ -202,3 +202,4 @@ Since, the result bed file is very small, we can directly put it into IGV to vis
 
 By select different P-values, we can get differnet numbers of peaks. The smaller the P-values, the more significant peaks can be found. 
 
+# 7. Annotation with ChIPseeker package
