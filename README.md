@@ -199,3 +199,6 @@ macs2 callpeak -t ~/chip/3.alignment/4_keep_paired/paired_KIN5_G1.bam  -c ~/chip
 # --extsize 147, extsize option specifies the extension size for fragment length estimation.
 ```
 Since, the result bed file is very small, we can directly put it into IGV to visualize.
+
+By select different P-values, we can get differnet numbers of peaks. The smaller the P-values, the more significant peaks can be found. 
+
