@@ -140,7 +140,7 @@ In the example we gave, we were trying to find two proteins binding area in Plas
 ![results of chip-seq analysis on IGV](https://github.com/ZehaoLi666/ChIP-Seq_analysis/blob/main/IGV-chip.png)
 No.3 and No.4 track in this pirture are two replicates of one antibody binding samoles and No.6 track is the control samples. It's a little difficult to find peaks by naked eyes because there are many non-specific binding in control samples. Actually, this step can only provide us a general preview. We need to use treat group to substract control group first.
 
-## 5.5 Substract contol 
+## 5.5 Substract background in treat group by control group  
 we need to substract control's read counts, the rest will be the specific binding region. 
 Start from the txt.file, after normalization in 5.4.  
 ```
