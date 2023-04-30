@@ -166,7 +166,7 @@ write.table(combinded, file="sub_G1.txt", sep="\t", row.names=FALSE, col.names=F
 ```
 Then continue to do the rest in 5.4. 
 
-Now, we can see ![the results after substraction of background](https://github.com/ZehaoLi666/ChIP-Seq_analysis/blob/main/Picture2.png), the read counts look like peaks.    
+Now, we can see the results after substraction of background ![the results after substraction of background](https://github.com/ZehaoLi666/ChIP-Seq_analysis/blob/main/Picture2.png), the read counts look like peaks.    
 
 
 # 6. Part5 Peak calling 
