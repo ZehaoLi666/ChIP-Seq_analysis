@@ -203,4 +203,23 @@ Since, the result bed file is very small, we can directly put it into IGV to vis
 By select different P-values, we can get differnet numbers of peaks. The smaller the P-values, the more significant peaks can be found. 
 
 # 7. Annotation with ChIPseeker package
-[ChIPseeker](https://github.com/YuLab-SMU/ChIPseeker)
+[ChIPseeker](https://github.com/YuLab-SMU/ChIPseeker)  
+```
+# R 
+# make TxDb file for ChIPseeker (reference genome)
+## create a TxDb object from a GTF or GFF file using the "makeTxDbFromGFF()" or "makeTxDbFromUCSC()" functions provided by the GenomicFeatures package
+download.file("https://plasmodb.org/common/downloads/Current_Release/PbergheiANKA/gff/data/PlasmoDB-62_PbergheiANKA.gff","PbergheiANKA.gff")
+library(GenomicFeatures)
+txdb <- makeTxDbFromGFF("PbergheiANKA.gff", format = "gff")
+
+# read peak file from MACS2 
+library(ChIPseeker)
+peak_G1 <- readPeakFile("KIN8X_G1_peaks.narrowPeak", header=FALSE)
+
+# annotation 
+result1 <- annotatePeak(peak_G1, TxDb = txdb)
+
+# Write the output to a new file
+write.table(result1, file="peak_G1.xls", sep="\t", row.names=FALSE, col.names=TRUE)
+```
+
